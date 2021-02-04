@@ -2,6 +2,7 @@
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using System.Threading.Tasks;
+using DSharpPlus.Interactivity.Extensions;
 
 namespace Discord_Bot_Tutorial.Commands
 {
@@ -46,6 +47,30 @@ namespace Discord_Bot_Tutorial.Commands
                 message = "That is not my name!";
 
             await ctx.Channel.SendMessageAsync(message).ConfigureAwait(false);
+        }
+
+        [Command("respondMessage")]
+        public async Task RespondMessage(CommandContext ctx)
+        {
+            var interactivity = ctx.Client.GetInteractivity();
+
+            var message =
+                await interactivity.WaitForMessageAsync(x => x.Channel == ctx.Channel && x.Author == ctx.User)
+                    .ConfigureAwait(false);
+
+            await ctx.Channel.SendMessageAsync(message.Result.Content).ConfigureAwait(false);
+        }
+
+        [Command("respondReaction")]
+        public async Task RespondReaction(CommandContext ctx)
+        {
+            var interactivity = ctx.Client.GetInteractivity();
+
+            var message =
+                await interactivity.WaitForReactionAsync(x => x.Channel == ctx.Channel && x.User == ctx.User)
+                    .ConfigureAwait(false);
+
+            await ctx.Channel.SendMessageAsync(message.Result.Emoji).ConfigureAwait(false);
         }
     }
 }
