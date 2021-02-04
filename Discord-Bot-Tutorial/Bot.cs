@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Discord_Bot_Tutorial.Commands;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.EventArgs;
@@ -43,11 +44,15 @@ namespace Discord_Bot_Tutorial
             {
                 StringPrefixes = new string[]{configJson.Prefix},
                 EnableDms = false,
-                EnableMentionPrefix = true
+                EnableMentionPrefix = true,
+                DmHelp = true
             };
 
             Commands = Client.UseCommandsNext(commandsConfig);
 
+            //comand yazdiqdan sonra register etmek lazimdir.
+
+            Commands.RegisterCommands<FunCommands>();
             await Client.ConnectAsync();
 
             await Task.Delay(-1);
