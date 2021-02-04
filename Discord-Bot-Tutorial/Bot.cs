@@ -62,6 +62,7 @@ namespace Discord_Bot_Tutorial
             //comand yazdiqdan sonra register etmek lazimdir.
 
             Commands.RegisterCommands<FunCommands>();
+            Commands.RegisterCommands<TeamCommands>();
             await Client.ConnectAsync();
 
             await Task.Delay(-1);
