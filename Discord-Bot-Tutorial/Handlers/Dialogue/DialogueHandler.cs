@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Discord_Bot_Tutorial.Handlers.Steps;
+using Discord_Bot_Tutorial.Handlers.Dialogue.Steps;
 using DSharpPlus;
 using DSharpPlus.Entities;
 

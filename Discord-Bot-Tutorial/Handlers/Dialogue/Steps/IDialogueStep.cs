@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using DSharpPlus;
 using DSharpPlus.Entities;
 
-namespace Discord_Bot_Tutorial.Handlers.Steps
+namespace Discord_Bot_Tutorial.Handlers.Dialogue.Steps
 {
     public interface IDialogueStep
     {
